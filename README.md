@@ -1,3 +1,11 @@
+## Stato della documentazione
+
+- **Ultima verifica:** 18 giugno 2026
+- **Build testata:** <https://github.com/Elisabetta-43/Stage_Locatelli>
+
+
+<br><br>
+
 # BDAP-Automation-Deployment
 
 Questa repository documenta i processi utilizzati per distribuire **BDAP Automation** come applicazione Windows.
