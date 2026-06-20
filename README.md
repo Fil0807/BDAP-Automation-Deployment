@@ -1,7 +1,7 @@
 ## Stato della documentazione
 
-- **Ultima verifica:** 18 giugno 2026
-- **Build testata:** <https://github.com/Elisabetta-43/Stage_Locatelli>
+- **Ultima versione utilizzata:** 18 giugno 2026
+- **Link build testata:** <https://github.com/Elisabetta-43/Stage_Locatelli>
 
 
 <br><br>
@@ -14,12 +14,10 @@ L'obiettivo è consentire l'esecuzione del software senza richiedere all'utente 
 
 ## Metodi di distribuzione
 
-Attualmente sono in valutazione due differenti approcci di distribuzione:
-
 - **Metodo 1:** generazione di un eseguibile tramite PyInstaller.
 - **Metodo 2:** creazione di un installer Windows che automatizzi completamente l'installazione dell'applicazione.
 
-<br>
+<br><br><br>
 
 # Metodo 1 - Generazione dell'eseguibile con PyInstaller
 
@@ -46,7 +44,6 @@ Eseguendo:
 ```bash
 python setup.py build_exe
 ```
-
 viene avviato automaticamente **PyInstaller** con tutti i parametri necessari alla creazione della versione distribuibile dell'applicazione.
 
 <br>
@@ -74,13 +71,12 @@ Al termine del processo viene creata una cartella contenente l'eseguibile e tutt
 ## Output generato
 
 ```text
-BDAP_Automation/
-│
-├── BDAP_Automation.exe
-├── librerie Python
-├── file runtime
-├── DLL necessarie
-└── altre dipendenze
+ROOT
+└── BDAP_Automation/
+      │
+      ├── BDAP_Automation.exe
+      └── _internal/
+              └── Dipendenze del programma
 ```
 
 La cartella generata può essere distribuita direttamente all'utente finale senza ulteriori configurazioni.
@@ -97,30 +93,6 @@ Durante la build analizza automaticamente le dipendenze del progetto e le includ
 
 Documentazione ufficiale: <https://pyinstaller.org/>
 
-### tkinterdnd2
-
-Libreria che fornisce il supporto alle funzionalità di **Drag & Drop** dell'interfaccia grafica.
-
-Repository: <https://github.com/pmgagne/tkinterdnd2>
-
-### openpyxl
-
-Utilizzata per la lettura e la scrittura dei file Excel gestiti dall'applicazione.
-
-Documentazione ufficiale: <https://openpyxl.readthedocs.io/>
-
-### matplotlib
-
-Libreria utilizzata per la generazione di grafici e visualizzazioni dati.
-
-Documentazione ufficiale: <https://matplotlib.org/>
-
-### Flask
-
-Framework Python utilizzato per la realizzazione di applicazioni e servizi web.
-
-Documentazione ufficiale: <https://flask.palletsprojects.com/>
-
 <br>
 
 ## Considerazioni
@@ -130,37 +102,74 @@ Documentazione ufficiale: <https://flask.palletsprojects.com/>
 - Nessuna installazione di Python richiesta.
 - Distribuzione semplice e immediata.
 - Compatibilità con sistemi Windows privi di ambiente di sviluppo.
-- Procedura di build facilmente integrabile in pipeline automatiche.
 
 ### Limiti
 
 - Distribuzione tramite una cartella contenente numerosi file.
-- Dimensioni maggiori rispetto al solo codice sorgente.
-- Possibili falsi positivi da alcuni antivirus.
-- Necessità di rigenerare la build dopo ogni modifica dell'applicazione.
 
-<br>
+<br><br><br>
 
-# Metodo 2 - Distribuzione tramite installer Windows
+# Metodo 2 - Distribuzione tramite installer Windows (Inno Setup)
 
 ## Obiettivo
 
-Il secondo approccio prevede la distribuzione dell'applicazione tramite un installer dedicato.
+Il secondo approccio prevede la distribuzione dell'applicazione tramite un installer Windows generato con **Inno Setup 7.0**.
 
-L'obiettivo è fornire all'utente finale un'esperienza di installazione simile a quella delle comuni applicazioni Windows, riducendo al minimo le operazioni manuali.
+L'obiettivo è fornire all'utente finale un'esperienza di installazione simile a quella delle comuni applicazioni Windows, riducendo al minimo le operazioni manuali e semplificando la gestione degli aggiornamenti e della disinstallazione.
 
 <br>
 
-## Funzionalità previste
+## Strumento utilizzato
 
-L'installer dovrà occuparsi automaticamente di:
+Download ufficiale:
+
+<https://jrsoftware.org/isdl.php#v7>
+
+Documentazione ufficiale:
+
+<https://jrsoftware.org/isinfo.php>
+
+<br>
+
+## Funzionalità implementate
+
+L'installer si occupa automaticamente di:
 
 - Creazione della cartella di installazione.
-- Copia dell'eseguibile e delle dipendenze necessarie.
-- Creazione dei collegamenti nel menu Start e sul Desktop.
-- Configurazione delle risorse richieste dall'applicazione.
+- Copia dell'eseguibile e delle relative dipendenze.
+- Creazione del collegamento sul Desktop.
+- Creazione del gruppo applicazione nel menu Start.
 - Registrazione dell'applicazione tra i programmi installati di Windows.
-- Generazione di una procedura di disinstallazione dedicata.
+- Generazione automatica dell'uninstaller.
+- Rimozione dei file installati durante la procedura di disinstallazione.
 
 <br>
 
+## Processo di distribuzione
+
+1. Generazione della build tramite PyInstaller.
+2. Raccolta dei file prodotti nella cartella di distribuzione.
+3. Compilazione dello script `.iss` tramite Inno Setup.
+4. Generazione del pacchetto di installazione finale (`Setup.exe`).
+
+<br>
+
+## Output generato
+
+L'output finale consiste in un singolo file eseguibile di installazione:
+
+```text
+Setup.exe
+```
+
+L'utente finale può avviare il file e completare l'installazione tramite una procedura guidata standard di Windows.
+
+<br>
+
+## Vantaggi rispetto alla distribuzione diretta
+
+- Distribuzione tramite un unico file.
+- Installazione guidata.
+- Presenza di una procedura di disinstallazione.
+
+<br>
