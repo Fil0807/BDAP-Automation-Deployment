@@ -153,7 +153,7 @@ L'installer si occupa automaticamente di:
 1. Generazione della build tramite PyInstaller.
 2. Raccolta dei file prodotti nella cartella di distribuzione.
 3. Compilazione dello script `.iss` tramite Inno Setup.
-4. Generazione del pacchetto di installazione finale (`Setup.exe`).
+4. Generazione del pacchetto di installazione finale (`BDAP Automation Installer.exe`).
 
 <br>
 
@@ -162,7 +162,7 @@ L'installer si occupa automaticamente di:
 L'output finale consiste in un singolo file eseguibile di installazione:
 
 ```text
-Setup.exe
+BDAP Automation Installer.exe
 ```
 
 L'utente finale può avviare il file e completare l'installazione tramite una procedura guidata standard di Windows.
