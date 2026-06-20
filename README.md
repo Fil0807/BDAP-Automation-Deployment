@@ -72,10 +72,13 @@ Al termine del processo viene creata una cartella contenente l'eseguibile e tutt
 
 ```text
 ROOT
+│
+├── ...
 └── BDAP_Automation/
       │
       ├── BDAP_Automation.exe
       └── _internal/
+              │
               └── Dipendenze del programma
 ```
 
