@@ -34,7 +34,7 @@ La build viene generata in modalità **OneDir**, producendo una cartella contene
 Nel file `requirements.txt` è stata aggiunta la dipendenza:
 
 ```txt
-PyInstaller>=7.0
+PyInstaller>=6.0
 ```
 
 È stato inoltre creato il file `setup.py`, utilizzato per automatizzare la generazione dell'eseguibile.
