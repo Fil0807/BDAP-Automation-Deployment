@@ -17,7 +17,6 @@ OPTIONS = {
     # Risorse del progetto
     "resources": [
         "Template_Analisi.xlsx",
-        "image",
     ],
 
     # Informazioni dell'applicazione
