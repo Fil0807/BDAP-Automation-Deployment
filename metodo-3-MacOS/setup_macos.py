@@ -12,6 +12,15 @@ OPTIONS = {
         "matplotlib",
         "tkinterdnd2",
         "PIL",
+        "tkinter",
+    ],
+
+    "includes": [
+        "_tkinter",
+        "tkinter",
+        "tkinter.ttk",
+        "tkinter.filedialog",
+        "tkinter.messagebox",
     ],
 
     # Risorse del progetto
