@@ -134,6 +134,8 @@ Documentazione ufficiale: <https://pyinstaller.org/>
 
 Il secondo approccio prevede la distribuzione dell'applicazione tramite un installer Windows generato con **Inno Setup 7.0**.
 
+Il file ```BDAPAutomation.iss``` comprende tutti i dati necessari ed un esempio del percorso per indicare i file corretti
+
 L'obiettivo è fornire all'utente finale un'esperienza di installazione simile a quella delle comuni applicazioni Windows, riducendo al minimo le operazioni manuali e semplificando la gestione degli aggiornamenti e della disinstallazione.
 
 <br>
