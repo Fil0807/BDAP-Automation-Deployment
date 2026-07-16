@@ -42,22 +42,24 @@ class BuildExeCommand(Command):
             sys.executable,
             "-m",
             "PyInstaller",
+
             "--noconfirm",
             "--clean",
             "--windowed",
             "--onedir",
-            "--name",
-            "BDAP_Automation",
-            "--distpath",
-            str(DIST_DIR),
-            "--workpath",
-            str(BUILD_DIR),
-            "--specpath",
-            str(BUILD_DIR),
-            "--hidden-import",
-            "tkinterdnd2",
-            "--hidden-import",
-            "tkinterdnd2.TkinterDnD",
+
+            "--name", "BDAP_Automation",
+
+            "--distpath", str(DIST_DIR),
+            "--workpath", str(BUILD_DIR),
+            "--specpath", str(BUILD_DIR),
+
+            "--hidden-import", "tkinterdnd2",
+            "--hidden-import", "tkinterdnd2.TkinterDnD",
+
+            "--add-data",
+            f"{ROOT / 'Template_Analisi.xlsx'};.",
+
             str(ROOT / "bdap_app" / "__main__.py"),
         ]
         subprocess.check_call(cmd)
