@@ -208,6 +208,8 @@ L'utente finale può avviare il file e completare l'installazione tramite una pr
 
 # Metodo 3 - Distribuzione per macOS (PyInstaller)
 
+#Descrizione da aggionare a PyInstaller, py2app non viene più usato
+
 La distribuzione per macOS avviene tramite la creazione di un'applicazione autonoma (`.app`) e della successiva conversione in un pacchetto di installazione (`.dmg`).
 
 Per questo processo vengono utilizzati i seguenti strumenti:
