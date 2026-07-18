@@ -16,7 +16,7 @@ L'obiettivo è consentire l'esecuzione del software senza richiedere all'utente 
 
 - [Metodo 1 - Generazione dell'eseguibile con PyInstaller](#metodo-1---generazione-delleseguibile-con-pyinstaller): generazione di un eseguibile tramite PyInstaller.
 - [Metodo 2 - Distribuzione tramite installer Windows (Inno Setup)](#metodo-2---distribuzione-tramite-installer-windows-inno-setup): creazione di un installer Windows che automatizzi completamente l'installazione dell'applicazione.
-- [Metodo 3 - Distribuzione per macOS (py2app)](#metodo-3---distribuzione-per-macos-py2app): creazione di un file dmg per la condivisione installazione facilitata dell'app anche su MacOS.
+- [Metodo 3 - Distribuzione per macOS (PyInstaller)](#metodo-3---distribuzione-per-macos-PyInstaller): creazione di un file dmg per la condivisione installazione facilitata dell'app anche su MacOS.
 <br><br><br>
 
 # BDAP-Automation-Deployment
@@ -206,7 +206,7 @@ L'utente finale può avviare il file e completare l'installazione tramite una pr
 
 
 
-# Metodo 3 - Distribuzione per macOS (py2app)
+# Metodo 3 - Distribuzione per macOS (PyInstaller)
 
 La distribuzione per macOS avviene tramite la creazione di un'applicazione autonoma (`.app`) e della successiva conversione in un pacchetto di installazione (`.dmg`).
 
