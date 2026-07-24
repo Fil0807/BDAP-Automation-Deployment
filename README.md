@@ -1,4 +1,4 @@
-## Stato della documentazione
+o## Stato della documentazione
 
 - **Ultima versione utilizzata:** 14/07/2026
 - **Link build testata:** <https://github.com/Fil0807/BDAP_Automation-Public->
