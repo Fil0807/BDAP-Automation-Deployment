@@ -22,8 +22,29 @@ L'obiettivo è consentire l'esecuzione del software senza richiedere all'utente 
 # BDAP-Automation-Deployment
 
 Questa repository documenta i processi utilizzati per distribuire **BDAP Automation** come applicazione Windows e macOS.
+In tutti i passa è consigliata la creazione di un ambiente di sviluppo tramite i seguenti comandi:
 
----
+
+Creazione ambiente virtuale:
+```bash
+python -m venv .venv
+```
+
+Attivazione ambiente virtule:
+```bash
+source .venv/bin/activate
+```
+
+Installazione/Aggiornaento dei requisiti:
+```bash
+pip install -r requirements.txt
+```
+
+
+<br>
+<br>
+<br>
+<br>
 
 # Metodo 1 - Generazione dell'eseguibile con PyInstaller
 
@@ -208,16 +229,14 @@ L'utente finale può avviare il file e completare l'installazione tramite una pr
 
 # Metodo 3 - Distribuzione per macOS (PyInstaller)
 
-#Descrizione da aggionare a PyInstaller, py2app non viene più usato
-
 La distribuzione per macOS avviene tramite la creazione di un'applicazione autonoma (`.app`) e della successiva conversione in un pacchetto di installazione (`.dmg`).
 
 Per questo processo vengono utilizzati i seguenti strumenti:
 
-- **py2app**: converte il progetto Python in una normale applicazione macOS.
+- **PyInstaller**: converte il progetto Python in una normale applicazione macOS.
 - **create-dmg**: genera il file `.dmg` utilizzato per distribuire l'applicazione.
 
----
+<br>
 
 ## Requisiti
 
@@ -225,7 +244,7 @@ Per garantire la compatibilità con le librerie del progetto e con gli strumenti
 
 La procedura descritta di seguito utilizza **Python 3.12**.
 
----
+<br>
 
 ## Processo di generazione
 
@@ -243,7 +262,7 @@ Se il comando restituisce un errore o Homebrew non è installato, procedere con 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
----
+<br>
 
 ### 2. Installazione di create-dmg
 
@@ -253,31 +272,16 @@ Installare il tool necessario alla creazione del file `.dmg`:
 brew install create-dmg
 ```
 
----
+<br>
 
 ### 3. Posizionarsi nella cartella del progetto
 
-Dal Terminale spostarsi nella cartella principale del progetto e aggiungere il file `setup_macos.py`.
+Dal Terminale spostarsi nella cartella principale del progetto e aggiungere il file `BDAP Automation.spec`.
 
 <br>
 
-### 4. Creazione dell'ambiente virtuale
 
-Creare l'ambiente virtuale:
-
-```bash
-python3.12 -m venv .venv
-```
-
-Attivarlo:
-
-```bash
-source .venv/bin/activate
-```
-
-<br>
-
-### 5. Installazione delle dipendenze
+### 4. Installazione delle dipendenze
 
 Installare tutte le dipendenze del progetto:
 
@@ -285,92 +289,44 @@ Installare tutte le dipendenze del progetto:
 pip install -r requirements.txt
 ```
 
-Installare successivamente `py2app`:
+Installare successivamente `PyInstaller`:
 
 ```bash
-pip install py2app
+pip install pyinstaller
 ```
 
 <br>
 
-### 6. Generazione dell'applicazione
 
-Dalla cartella principale del progetto eseguire:
-
+### 5. Creazione file .app
+Creare il file *.app* con il seguente comando:
 ```bash
-python setup_macos.py py2app
-```
-
-Al termine della procedura verrà creata la cartella `dist`, contenente l'applicazione macOS.
-
-```text
-ROOT
-│
-├── ...
-└── dist/
-    └── BDAP Automation.app
+pyinstaller --clean "BDAP Automation.spec
 ```
 
 <br>
 
-### 7. Creazione del file DMG
-
-Sempre dalla cartella principale del progetto eseguire:
-
+### 6. Creazione file .dmg
+Da terminale attivo nella cartella del progetto:
 ```bash
 create-dmg \
   --volname "BDAP Automation" \
   --window-size 800 400 \
   --icon-size 100 \
-  --icon "BDAP Automation.app" 200 190 \
-  --app-drop-link 600 185 \
-  BDAP_Automation.dmg \
-  dist
-```
-
-Al termine verrà generato il file:
-
-```text
-BDAP_Automation.dmg
-```
-
-pronto per la distribuzione.
-
-<br>
-
-## Output generato
-
-```text
-ROOT
-│
-├── ...
-├── dist/
-│   └── BDAP Automation.app
-│
-└── BDAP_Automation.dmg
+  --icon "BDAP Automation.app" 220 180 \
+  --hide-extension "BDAP Automation.app" \
+  --app-drop-link 580 180 \
+  "BDAP_Automation.dmg" \
+  "dist/"
 ```
 
 <br>
 
-## Librerie utilizzate
+## Performance e Test
+Nel caso si volesse avere una versione più rapida da provare è possibile sostituire il file *BDAP Automation.spec* con il file *BDAP Automation-OneDir.spec*
+!Rinominare il file o aggiornare i comandi!
 
-### py2app
-
-`py2app` converte un progetto Python in una normale applicazione macOS (`.app`), includendo automaticamente l'interprete Python e tutte le librerie necessarie all'esecuzione.
-
-Documentazione ufficiale:
-
-https://py2app.readthedocs.io/
-
-<br>
-
-### create-dmg
-
-`create-dmg` automatizza la creazione di un'immagine disco (`.dmg`) contenente l'applicazione e il collegamento alla cartella **Applications**, semplificando la distribuzione e l'installazione del software.
-
-Repository ufficiale:
-
-https://github.com/create-dmg/create-dmg
+Questa versione evita passaggi di compressione non necessarie nella fase di test, ma potrebbe causa problemi di compatibilità con alcune librerie.
 
 <br>
 
@@ -378,9 +334,9 @@ https://github.com/create-dmg/create-dmg
 
 La procedura è stata testata su sistemi macOS con processore **Intel**.
 
-Per ottenere una build nativa compatibile con processori **Apple Silicon (M1, M2, M3 e successivi)** è necessario eseguire l'intera procedura di compilazione direttamente su un Mac dotato di tale architettura.
+Per ottenere una build nativa compatibile con processori **Apple Silicon (M1, M2, M3, ...)** è necessario eseguire l'intera procedura di compilazione direttamente su un Mac dotato di tale architettura.
 
-Questo è dovuto al fatto che alcune librerie Python contenenti componenti nativi (ad esempio **Pillow**) vengono compilate automaticamente per l'architettura della macchina utilizzata durante la build.
+Questo è dovuto al fatto che alcune librerie Python contenenti componenti nativi (ad esempio **Pillow**) vengono compilate e scaricate automaticamente per l'architettura della macchina utilizzata durante la build.
 
 
 
