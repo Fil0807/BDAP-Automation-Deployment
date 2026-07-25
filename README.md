@@ -1,4 +1,4 @@
-o## Stato della documentazione
+## Stato della documentazione
 
 - **Ultima versione utilizzata:** 14/07/2026
 - **Link build testata:** <https://github.com/Fil0807/BDAP_Automation-Public->
@@ -16,13 +16,18 @@ L'obiettivo è consentire l'esecuzione del software senza richiedere all'utente 
 
 - [Metodo 1 - Generazione dell'eseguibile con PyInstaller](#metodo-1---generazione-delleseguibile-con-pyinstaller): generazione di un eseguibile tramite PyInstaller.
 - [Metodo 2 - Distribuzione tramite installer Windows (Inno Setup)](#metodo-2---distribuzione-tramite-installer-windows-inno-setup): creazione di un installer Windows che automatizzi completamente l'installazione dell'applicazione.
-- [Metodo 3 - Distribuzione per macOS (PyInstaller)](#metodo-3---distribuzione-per-macos-PyInstaller): creazione di un file dmg per la condivisione installazione facilitata dell'app anche su MacOS.
-<br><br><br>
+- [Metodo 3 - Distribuzione per MacOS (PyInstaller)](#metodo-3---distribuzione-per-MacOS-PyInstaller): creazione di un file `.dmg` per facilitare la distribuzione e l'installazione dell'applicazione su MacOS.
+
+
+<br>
+<br>
+<br>
+<br>
 
 # BDAP-Automation-Deployment
 
-Questa repository documenta i processi utilizzati per distribuire **BDAP Automation** come applicazione Windows e macOS.
-In tutti i passa è consigliata la creazione di un ambiente di sviluppo tramite i seguenti comandi:
+Questa repository documenta i processi utilizzati per distribuire **BDAP Automation** come applicazione Windows e MacOS.
+In tutti i passaggi è consigliato la creazione di un ambiente di sviluppo tramite i seguenti comandi:
 
 
 Creazione ambiente virtuale:
@@ -30,12 +35,12 @@ Creazione ambiente virtuale:
 python -m venv .venv
 ```
 
-Attivazione ambiente virtule:
+Attivazione ambiente virtuale:
 ```bash
 source .venv/bin/activate
 ```
 
-Installazione/Aggiornaento dei requisiti:
+Installazione/Aggiornamento dei requisiti:
 ```bash
 pip install -r requirements.txt
 ```
@@ -137,16 +142,13 @@ Documentazione ufficiale: <https://pyinstaller.org/>
 
 - Distribuzione tramite una cartella contenente numerosi file.
 
-<br><br><br>
 
 
 
-
-
-
-
-
-
+<br>
+<br>
+<br>
+<br>
 
 
 
@@ -214,26 +216,24 @@ L'utente finale può avviare il file e completare l'installazione tramite una pr
 - Installazione guidata.
 - Presenza di una procedura di disinstallazione.
 
-<br><br><br>
+
+
+
+<br>
+<br>
+<br>
+<br>
 
 
 
 
+# Metodo 3 - Distribuzione per MacOS (PyInstaller)
 
-
-
-
-
-
-
-
-# Metodo 3 - Distribuzione per macOS (PyInstaller)
-
-La distribuzione per macOS avviene tramite la creazione di un'applicazione autonoma (`.app`) e della successiva conversione in un pacchetto di installazione (`.dmg`).
+La distribuzione per MacOS avviene tramite la creazione di un'applicazione autonoma (`.app`) e della successiva conversione in un pacchetto di installazione (`.dmg`).
 
 Per questo processo vengono utilizzati i seguenti strumenti:
 
-- **PyInstaller**: converte il progetto Python in una normale applicazione macOS.
+- **PyInstaller**: converte il progetto Python in una normale applicazione MacOS.
 - **create-dmg**: genera il file `.dmg` utilizzato per distribuire l'applicazione.
 
 <br>
@@ -283,9 +283,10 @@ Nella cartella relativa al metodo sono presenti due versioni del file `.spec`:
 Questo metodo non richiede decompressione ed è consigliata nella fase di test senza creazione di `.dmg`
 
 - `BDAP Automation-OneFile` crea solamente l'applicazione completamente autonoma.
-Richiede decompressione ad ogni utilizzo e potrebbe risultare più lento, è consigliato quando si effettua la creazione del file `.dmg`
+Richiede decompressione a ogni utilizzo e potrebbe risultare più lento, è consigliato quando si effettua la creazione del file `.dmg`
 
-!!Ricordarsi di rinominare il file scaricato o modificare il nome nei comandi!!
+> **Nota**
+> Ricordarsi di rinominare il file scaricato oppure modificare il nome nei comandi riportati di seguito.
 
 <br>
 
@@ -307,7 +308,7 @@ pip install pyinstaller
 <br>
 
 
-### 5. Creazione file .app
+### 5. Creazione del file `.app`
 Creare il file *.app* con il seguente comando:
 ```bash
 pyinstaller --clean "BDAP Automation.spec"
@@ -315,8 +316,8 @@ pyinstaller --clean "BDAP Automation.spec"
 
 <br>
 
-### 6. Creazione file .dmg
-Da terminale attivo nella cartella del progetto:
+### 6. Creazione file `.dmg`
+Dal Terminale, posizionarsi nella cartella del progetto ed eseguire:
 ```bash
 create-dmg \
   --volname "BDAP Automation" \
@@ -333,7 +334,7 @@ create-dmg \
 
 ## Compatibilità
 
-La procedura è stata testata su sistemi macOS con processore **Intel**.
+La procedura è stata testata su sistemi MacOS con processore **Intel**.
 
 Per ottenere una build nativa compatibile con processori **Apple Silicon (M1, M2, M3, ...)** è necessario eseguire l'intera procedura di compilazione direttamente su un Mac dotato di tale architettura.
 
