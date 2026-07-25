@@ -276,7 +276,16 @@ brew install create-dmg
 
 ### 3. Posizionarsi nella cartella del progetto
 
-Dal Terminale spostarsi nella cartella principale del progetto e aggiungere il file `BDAP Automation.spec`.
+Dal Terminale spostarsi nella cartella principale del progetto e aggiungere il file `.spec`.
+
+Nella cartella relativa al metodo sono presenti due versioni del file `.spec`:
+- `BDAP Automation-OneDir` crea una cartella contenente l'applicazione e alcuni file necessari.
+Questo metodo non richiede decompressione ed è consigliata nella fase di test senza creazione di `.dmg`
+
+- `BDAP Automation-OneFile` crea solamente l'applicazione completamente autonoma.
+Richiede decompressione ad ogni utilizzo e potrebbe risultare più lento, è consigliato quando si effettua la creazione del file `.dmg`
+
+!!Ricordarsi di rinominare il file scaricato o modificare il nome nei comandi!!
 
 <br>
 
@@ -301,7 +310,7 @@ pip install pyinstaller
 ### 5. Creazione file .app
 Creare il file *.app* con il seguente comando:
 ```bash
-pyinstaller --clean "BDAP Automation.spec
+pyinstaller --clean "BDAP Automation.spec"
 ```
 
 <br>
@@ -319,14 +328,6 @@ create-dmg \
   "BDAP_Automation.dmg" \
   "dist/"
 ```
-
-<br>
-
-## Performance e Test
-Nel caso si volesse avere una versione più rapida da provare è possibile sostituire il file *BDAP Automation.spec* con il file *BDAP Automation-OneDir.spec*
-!Rinominare il file o aggiornare i comandi!
-
-Questa versione evita passaggi di compressione non necessarie nella fase di test, ma potrebbe causa problemi di compatibilità con alcune librerie.
 
 <br>
 
