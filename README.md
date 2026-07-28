@@ -35,10 +35,21 @@ Creazione ambiente virtuale:
 python -m venv .venv
 ```
 
-Attivazione ambiente virtuale:
+<br>
+
+Attivazione ambiente virtuale
+
+MacOS/Linux:  
 ```bash
 source .venv/bin/activate
 ```
+
+Windows:  
+```bash
+.\.venv\Scripts\Activate.ps1
+```
+
+<br>
 
 Installazione/Aggiornamento dei requisiti:
 ```bash
