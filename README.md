@@ -209,6 +209,16 @@ L'installer si occupa automaticamente di:
 
 <br>
 
+## Processo generazione eseguibile
+1. Cliccare su File -> Apri -> Navigare e caricare il file `BDAPAutomation.iss` (scaricabile da questo github sotto la cartella medoto 2).
+2. Modificare il percorso che il programma usa per cercare tutti i file del programma, come indicato nell'esempio
+   (Serve indicare la cartella dove risiede il file .exe, il resto viene caricato automaticamente)
+3. Cliccare su Esegui o in alternativa usare la shortcut F9
+4. L'output viene generato in una cartella chiamata Output che dovrebbe venire creata dove è stato salvato il file `BDAPAutomation.iss`.
+
+
+<br>
+
 ## Output generato
 
 L'output finale consiste in un singolo file eseguibile di installazione:
