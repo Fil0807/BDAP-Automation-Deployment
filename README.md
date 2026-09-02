@@ -2,6 +2,7 @@
 
 - **Ultima versione utilizzata:** 02/09/26   v0.3.0 (2 settembre 2026)
 - **Link build testata:** <https://github.com/Fil0807/BDAP_Automation>
+- **Link google drive con i vari installer e file:** <https://drive.google.com/drive/folders/1m9AFXRvaN1fHXMibDA_T260TiFPyPpL8?usp=sharing>
 
 
 <br><br>
