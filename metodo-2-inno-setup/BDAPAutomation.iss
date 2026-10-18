@@ -1,9 +1,9 @@
 #define MyAppName "BDAP Automation"
 #define MyAppVersion "1.0.0"
-#define MyAppPublisher "Tibiletti Filippo"
+#define MyAppPublisher ""
 #define MyAppExeName "BDAP_Automation.exe"
 #define MyAppFolder ""
-;esepio di percorso dell'app    #define MyAppFolder "C:\Users\fil08\Desktop\BDAP_Automation"
+;esepio di percorso dell'app    #define MyAppFolder "C:\Users\User\Desktop\BDAP_Automation"
 
 [Setup]
 AppId={{9C39A7D4-8B90-4C33-8D7A-4F5E2A9A1234}
